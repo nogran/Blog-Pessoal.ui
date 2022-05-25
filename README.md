@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+Criação do projeto:
+```
+npx create-react-app blog-pessoal --template typescript
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
