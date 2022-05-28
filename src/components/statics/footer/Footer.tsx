@@ -20,7 +20,7 @@ function Footer() {
                             <a href="https://www.instagram.com/generationbrasil/" target="_blank">
                                 <InstagramIcon style={{ fontSize: 60, color: "white" }} />
                             </a>
-                            <a href="https://www.linkedin.com/school/generationbrasil/" target="_blank">
+                            <a href="https://www.linkedin.com/in/mateusnog95/" target="_blank">
                                 <LinkedInIcon style={{ fontSize: 60, color: "white" }} />
                             </a>
                         </Box>
