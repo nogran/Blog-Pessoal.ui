@@ -86,14 +86,19 @@ async function cadastrar(e: ChangeEvent<HTMLFormElement>) {
                 <Box paddingX={10}>
                     <form onSubmit={cadastrar}>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{ fontWeight: 'bold' }}>Cadastrar</Typography>
+
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             value={user.nome} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth required />
+
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             value={user.usuario} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required />
+
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            value={user.usuario} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required />
+                            value={user.senha} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required />
+                       
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}
                             value={confirmarSenha} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required />
+                        
                         <Box marginTop={2} textAlign='center'>
                             <Link to='/login' className='text-decorator-none'>
                                 <Button className='btnCancelar' variant='contained' color='secondary'>
