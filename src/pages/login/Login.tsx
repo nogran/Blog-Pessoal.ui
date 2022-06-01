@@ -72,7 +72,7 @@ function Login() {
                         <Box marginRight={1}>
                             <Typography variant='subtitle1' gutterBottom>Não tem uma conta?</Typography>
                         </Box>
-                        <Link to='/cadastrousuario'>
+                        <Link to='/cadastro'>
                             <Typography variant='subtitle1' gutterBottom style={{ fontWeight: 'bold' }}>Cadastre-se</Typography>
                         </Link>
                     </Box>

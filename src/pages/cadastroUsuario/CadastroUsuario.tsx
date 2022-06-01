@@ -6,7 +6,9 @@ import User from '../../models/User';
 import { cadastroUsuario } from '../../services/Service'
 import './CadastroUsuario.css'
 
-let history = useNavigate();
+function CadastroUsuario() {
+
+    let history = useNavigate();
 
 const [confirmarSenha, setConfirmarSenha] = useState<String>("")
 
@@ -77,7 +79,6 @@ async function cadastrar(e: ChangeEvent<HTMLFormElement>) {
     === : op. idêntico (valor === 9.0)
 */
 
-function CadastroUsuario() {
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
             <Grid item xs={6} className='imagem2'></Grid>
@@ -88,11 +89,11 @@ function CadastroUsuario() {
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             value={user.nome} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth required />
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            value={user.usuario} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required/>
+                            value={user.usuario} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required />
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            value={user.usuario} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required/>
+                            value={user.usuario} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required />
                         <TextField onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}
-                            value={confirmarSenha} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required/>
+                            value={confirmarSenha} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required />
                         <Box marginTop={2} textAlign='center'>
                             <Link to='/login' className='text-decorator-none'>
                                 <Button className='btnCancelar' variant='contained' color='secondary'>
