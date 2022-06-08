@@ -27,43 +27,65 @@ function CadastroTema() {
         if (id !== undefined) {
             findById(id)
         }
-
-        async function findById(id: string) {
-            buscaId(`/tema/${id}`, setTema, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-        }
     }, [id])
 
-    function updatedTema(e: ChangeEvent<HTMLInputElement>) {
+    async function findById(id: string) {
+        await buscaId(`/temas/${id}`, setTema, {
+            headers: {
+                'Authorization': token
+            }
+        })
+    }
+
+    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
         setTema({
             ...tema,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         })
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        console.log("tema " + JSON.stringify(tema))
 
+        // Se o ID for diferente de indefinido tente Atualizar
         if (id !== undefined) {
-            console.log(tema)
-            put(`/tema`, tema, setTema, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Tema atualizado com sucesso');
+
+            // TRY: Tenta executar a atualização 
+            try {
+                await put(`/temas`, tema, setTema, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+
+                alert('Tema atualizado com sucesso');
+
+                // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
+            } catch (error) {
+                console.log(`Error: ${error}`)
+                alert("Erro, por favor verifique a quantidade minima de caracteres")
+            }
+
+            // Se o ID for indefinido, tente Cadastrar
         } else {
-            post(`/tema`, tema, setTema, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Tema cadastrado com sucesso');
+
+            // TRY: Tenta executar o cadastro
+            try {
+                await post(`/temas`, tema, setTema, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+
+                alert('Tema cadastrado com sucesso');
+
+                // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
+            } catch (error) {
+                console.log(`Error: ${error}`)
+                alert("Erro, por favor verifique a quantidade minima de caracteres")
+            }
         }
+
         back()
     }
 
@@ -75,7 +97,16 @@ function CadastroTema() {
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
                 <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro tema</Typography>
-                <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
+                <TextField
+                    value={tema.descricao}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                    id="descricao"
+                    label="descricao"
+                    variant="outlined"
+                    name="descricao"
+                    margin="normal"
+                    fullWidth
+                />
                 <Button type="submit" variant="contained" color="primary">
                     Finalizar
                 </Button>
