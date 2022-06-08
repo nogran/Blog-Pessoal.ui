@@ -1,9 +1,18 @@
-import React from 'react';
 import { AppBar, Toolbar, Typography, Box } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 import './Navbar.css';
 
 function Navbar() {
+    const [token, setToken] = useLocalStorage('token');
+    let history = useNavigate();
+
+    function goLogout() {
+        setToken('')
+        alert("Usuario deslogado")
+        history('/login')
+    }
+
     return (
         <>
             <AppBar position="static">
@@ -15,37 +24,47 @@ function Navbar() {
                     </Box>
 
                     <Box display="flex" justifyContent="start">
-                        <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6">
-                                home
-                            </Typography>
-                        </Box>
-                        <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6">
-                                postagens
-                            </Typography>
-                        </Box>
-                        <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6">
-                                temas
-                            </Typography>
-                        </Box>
-                        <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6">
-                                cadastrar tema
-                            </Typography>
-                        </Box>
-                        <Link to='/login' className='text-decorator-none'>
-                        <Box mx={1} style={{ cursor: "pointer", color:"white" }}>
+
+                        <Link to="/home" className='text-decorator-none'>
+                            <Box mx={1} style={{ cursor: "pointer", color: "white"  }}>
+                                <Typography variant="h6">
+                                    home
+                                </Typography>
+                            </Box>
+                        </Link>
+
+                        <Link to="/posts" className='text-decorator-none'>
+                            <Box mx={1} style={{ cursor: "pointer", color: "white"  }}>
+                                <Typography variant="h6">
+                                    postagens
+                                </Typography>
+                            </Box>
+                        </Link>
+
+                        <Link to="/temas" className='text-decorator-none'>
+                            <Box mx={1} style={{ cursor: "pointer", color: "white"  }}>
+                                <Typography variant="h6">
+                                    temas
+                                </Typography>
+                            </Box>
+                        </Link>
+
+                        <Link to="/formulariotema" className='text-decorator-none'>
+                            <Box mx={1} style={{ cursor: "pointer", color: "white"  }}>
+                                <Typography variant="h6">
+                                    cadastrar tema
+                                </Typography>
+                            </Box>
+                        </Link>
+
+                        <Box mx={1} style={{ cursor: "pointer", color: "white" }} onClick={goLogout}>
                             <Typography variant="h6">
                                 logout
                             </Typography>
                         </Box>
-                    </Link>
-                </Box>
-
-            </Toolbar>
-        </AppBar>
+                    </Box>
+                </Toolbar>
+            </AppBar>
         </>
     );
 }
