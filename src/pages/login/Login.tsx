@@ -2,10 +2,11 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
 import useLocalStorage from 'react-use-localstorage';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { useDispatch } from "react-redux";
 import { login } from '../../services/Service';
 import UserLogin from '../../models/UserLogin';
 import './Login.css';
+import { addToken } from '../../store/tokens/action';
 
 function Login() {
 
@@ -14,6 +15,8 @@ function Login() {
 
     // Hooks que vão manipular o nosso Local Storage para gravar o Token
     const [token, setToken] = useLocalStorage('token')
+
+    const dispatch = useDispatch();
 
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
@@ -33,8 +36,9 @@ function Login() {
         })
     }
 
-    useEffect(() => {
-        if (token !== "") {
+    useEffect(() =>{
+        if(token != ''){
+            dispatch(addToken(token))
             history('/home')
         }
     }, [token])
