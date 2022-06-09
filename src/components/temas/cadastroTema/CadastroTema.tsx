@@ -3,14 +3,21 @@ import { Container, Typography, TextField, Button } from "@material-ui/core";
 import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+// import useLocalStorage from 'react-use-localstorage';
+import { UserState } from '../../../store/tokens/useReducer';
 import './CadastroTema.css';
-
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 function CadastroTema() {
     let history = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [token, setToken] = useLocalStorage('token');
+    // const [token, setToken] = useLocalStorage('token');
+    const token = useSelector<UserState, UserState["tokens"]>(
+        (state) => state.tokens
+    );
+
+    // Vai alterar um tema cadastrado
     const [tema, setTema] = useState<Tema>({
         id: 0,
         descricao: ''
@@ -18,12 +25,23 @@ function CadastroTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert("Voce precisa estar logado.")
+            // alert("Voce precisa estar logado.")
+            toast.error('Você precisa estar logado!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
             history("/login")
         }
     }, [token])
 
     useEffect(() => {
+        // Se há um id
         if (id !== undefined) {
             findById(id)
         }
@@ -58,12 +76,32 @@ function CadastroTema() {
                     }
                 })
 
-                alert('Tema atualizado com sucesso');
+                // alert('Tema atualizado com sucesso');
+                toast.success('Tema atualizado com sucesso !', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                });
 
                 // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
             } catch (error) {
                 console.log(`Error: ${error}`)
-                alert("Erro, por favor verifique a quantidade minima de caracteres")
+                // alert("Erro, por favor verifique a quantidade minima de caracteres")
+                toast.error('Erro, por favor verifique a quantidade minima de caracteres!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                });
             }
 
             // Se o ID for indefinido, tente Cadastrar
@@ -77,12 +115,32 @@ function CadastroTema() {
                     }
                 })
 
-                alert('Tema cadastrado com sucesso');
+                // alert('Tema cadastrado com sucesso');
+                toast.success('Tema cadastrado com sucesso !', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                });
 
                 // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
             } catch (error) {
                 console.log(`Error: ${error}`)
-                alert("Erro, por favor verifique a quantidade minima de caracteres")
+                // alert("Erro, por favor verifique a quantidade minima de caracteres")
+                toast.error('Erro, por favor verifique a quantidade minima de caracteres!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                });
             }
         }
 
