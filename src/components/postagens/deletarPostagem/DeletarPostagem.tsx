@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Typography, Button, Box, Card, CardActions, CardContent } from "@material-ui/core"
 import './DeletarPostagem.css';
 import Postagem from '../../../models/Postagem';
@@ -24,13 +24,13 @@ function DeletarPostagem() {
       // alert("Você precisa estar logado")
       toast.error('Você precisa estar logado!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
         progress: undefined,
-        theme: "dark"
       });
       history("/login")
     }
@@ -61,13 +61,13 @@ function DeletarPostagem() {
     // alert('Postagem deletada com sucesso');
     toast.success('Postagem deletada com sucesso !', {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
+      pauseOnHover: false,
+      draggable: false,
+      theme: "colored",
       progress: undefined,
-      theme: "dark"
     });
   }
   function nao() {
