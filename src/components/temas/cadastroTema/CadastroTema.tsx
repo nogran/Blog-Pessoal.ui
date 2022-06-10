@@ -28,13 +28,13 @@ function CadastroTema() {
             // alert("Voce precisa estar logado.")
             toast.error('Você precisa estar logado!', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
                 progress: undefined,
-                theme: "dark",
             });
             history("/login")
         }
@@ -79,13 +79,13 @@ function CadastroTema() {
                 // alert('Tema atualizado com sucesso');
                 toast.success('Tema atualizado com sucesso !', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
                     progress: undefined,
-                    theme: "dark"
                 });
 
                 // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
@@ -118,13 +118,13 @@ function CadastroTema() {
                 // alert('Tema cadastrado com sucesso');
                 toast.success('Tema cadastrado com sucesso !', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
                     progress: undefined,
-                    theme: "dark"
                 });
 
                 // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
@@ -143,7 +143,6 @@ function CadastroTema() {
                 });
             }
         }
-
         back()
     }
 
