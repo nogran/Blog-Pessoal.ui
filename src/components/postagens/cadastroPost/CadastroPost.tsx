@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import './CadastroPost.css';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -38,13 +38,13 @@ function CadastroPost() {
             // alert("Você precisa estar logado")
             toast.error('Você precisa estar logado!', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
                 progress: undefined,
-                theme: "dark"
             });
             history("/login")
         }
@@ -102,13 +102,13 @@ function CadastroPost() {
                 // alert('Postagem atualizada com sucesso');
                 toast.success('Postagem atualizada com sucesso !', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
                     progress: undefined,
-                    theme: "dark"
                 });
 
                 // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
@@ -117,13 +117,13 @@ function CadastroPost() {
 
                 toast.error('Erro, por favor verifique a quantidade minima de caracteres!', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
                     progress: undefined,
-                    theme: "dark"
                 });
                 // alert("Erro, por favor verifique a quantidade minima de caracteres")
             }
@@ -139,11 +139,12 @@ function CadastroPost() {
                 // alert('Postagem cadastrada com sucesso');
                 toast.success('Postagem cadastrada com sucesso !', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
                     progress: undefined,
                 });
 
