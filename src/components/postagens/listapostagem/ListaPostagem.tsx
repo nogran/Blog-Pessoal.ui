@@ -23,13 +23,13 @@ function ListaPostagem() {
       // alert("Voce precisa estar logado.")
       toast.error('Você precisa estar logado!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
         progress: undefined,
-        theme: "dark"
       });
       history("/login")
     }
