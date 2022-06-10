@@ -11,7 +11,6 @@ function Navbar() {
     const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
-
     let history = useNavigate();
     const dispatch = useDispatch();
 
@@ -20,14 +19,14 @@ function Navbar() {
         // alert("Usuario deslogado")
         toast.info('Usuario deslogado !', {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
             progress: undefined,
-            theme: "dark"
-          });
+        });
         history('/login')
     }
 
@@ -85,8 +84,8 @@ function Navbar() {
             </Toolbar>
         </AppBar>
     }
-    
-    return (    
+
+    return (
         <>
             {navbarComponent}
         </>
