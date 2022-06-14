@@ -12,4 +12,8 @@
 - [**Java**](https://www.java.com/en/)
 - [**MySQL**](https://www.mysql.com/)
 
+## Deploy Front-End
+https://nogran-blog.netlify.app/
+
+## Deploy Back-End
 https://nogran-blog.herokuapp.com/
